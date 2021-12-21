@@ -1,0 +1,63 @@
+* { margin:0; padding:0; box-sizing:border-box; 
+    font-family: 'Urbanist', sans-serif;}
+
+body{
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(/img/register_background.jpg);
+}
+
+.content{
+    width:400px;
+    background-color: rgb(255, 255, 255);
+    margin-left: calc(50% - 200px);
+    margin-top: 50px;
+    padding:20px;
+}
+
+h1{
+    color: rgb(83, 83, 83);
+    margin-bottom: 40px;
+}
+
+.flex-container{
+    display: flex;
+}
+
+.flex1{
+    flex-grow: 1;
+}
+
+.f-left{
+    padding-right: 10px;
+}
+
+.f-right{
+    padding-left:10px;
+}
+
+.input-field{
+    width:100%;
+    height:35px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border:2px solid rgb(192, 192, 192);
+    border-radius:5px;
+}
+.date-field{
+    width:100%;
+    height:35px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border:2px solid rgb(192, 192, 192);
+    border-radius:5px;
+}
+#submit{
+    width:100%;
+    height:35px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border:2px solid rgb(192, 192, 192);
+    border-radius:5px;
+    background-color: #1258ee;
+    color:white;
+    font-size:17px;
+}

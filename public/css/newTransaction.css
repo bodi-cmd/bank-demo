@@ -1,0 +1,144 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box; 
+    font-family: 'Urbanist', sans-serif;
+    --menu-color: rgb(78, 78, 78);
+    
+    --menu-color-translucent: rgba(78, 78, 78, 0.74);
+    --second-color:rgb(214, 214, 214);
+}
+
+#new-transaction{
+    background-color: var(--menu-color-translucent);
+    color:black;
+    backdrop-filter: blur(2px);
+    position: fixed;
+    height:500px;
+    width:750px;
+    margin-left:calc(50% - 375px);
+    margin-top:100px;
+    border-radius: 10px;
+    border:1px solid white;
+    font-size: 20px;
+    display: flex;
+}
+.fl1{
+    flex-basis: 0;
+    flex-grow: 1;
+    flex: 1 1 0px;
+    padding-left: 30px;
+}
+
+#close-tr{
+    position:absolute;
+    z-index: 100;
+    top:4px;
+    right:6px;
+    color:var(--second-color)
+}
+
+#new-transaction input{
+    width:200px;
+    height: 30px;
+    border:1px solid var(--second-color);
+    margin:5px;
+    border-radius: 5px;
+    padding-left: 5px;
+    font-size:14px;
+    background-color: var(--second-color);
+    color:black;
+    
+    font-weight: 600;
+}
+#new-transaction ::placeholder{
+    color:rgb(54, 54, 54);
+    font-weight: 600;
+}
+input:focus {
+    outline-width: 0;
+}
+
+#submit-transaction{
+    width:200px;
+    height: 40px;
+    border:1px solid var(--second-color);
+    margin:5px;
+    border-radius: 5px;
+    padding-left: 5px;
+    font-size:18px;
+    background-color: rgba(0, 0, 0, 0.507);
+    color:var(--second-color);
+    margin-top:30px;
+    padding:8px;
+    text-align: center;
+}
+.contacts{
+    background-color:none;
+    border:1px solid var(--second-color);
+    border-radius: 5px;
+    width:300px;
+    height:300px;
+    overflow-y: scroll;
+}
+.contacts::-webkit-scrollbar {
+    width: 10px;
+
+  }
+  .contacts::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  .contacts::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+
+.contact{
+    font-size: 18px;
+    padding-left: 10px;
+    background-color: rgba(0, 0, 0, 0.507);
+    color:var(--second-color);
+    margin-bottom:2px;
+    margin-top:2px;
+    border-radius: 2px;
+}
+
+.new-transaction-wrapper{
+    width:100vw;
+    position: fixed;
+    height:100vh;
+    background-color: rgba(0, 0, 0, 0.781);
+    z-index: 20;
+    display: none;
+}
+
+#submit-contact{
+    width:300px;
+    background:var(--second-color);
+    text-align: center;
+    margin-bottom: 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+.tr-contacts #add-contact input{
+    margin:0px;
+    background:none;
+    border-bottom:none;
+    border-radius: 0px;
+    color:white;
+    width:300px;
+}
+
+#new-transaction #add-contact input::placeholder{
+    color:rgb(134, 134, 134);
+}
+
+.tr-form-wrapper{
+    padding-left:38px;
+    padding-top:20px;
+}
+.fa-user-plus{
+    font-size:17px;
+}
+

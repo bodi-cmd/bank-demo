@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/%22%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="./css/style_pacient.css" rel="stylesheet" type="text/css">
+    <style>*:focus{outline: none;}</style>
+</head>
+<body>
+    <div class="container">
+    <div class="bg"></div>
+    <div class="topnav">
+        <img src="./img/med.png" alt="" style="float:left;height: 55px;margin-left:20px;">
+        <p style="float:left;color:white;font-size:24px;padding:0;margin-top:10px;">MedApp</p>
+        <a href="/">Acasa</a>
+        <a href="/logout">Deconectare</a>
+    </div>
+    <div class="left">
+        <p style="text-decoration:underline;margin-left: 5%;font-size: 19px;">Detalii pacient</p>
+        <p style="margin-left: 10%;">Nume:......................<%= user.NUME %></p>
+        <p style="margin-left: 10%;">Prenume:...............<%= user.PRENUME %></p>
+        <p style="margin-left: 10%;">Data nasterii:........<%= user.NASTERE %></p>
+        <p style="margin-left: 10%;">Sex:...........................<%= user.SEX %></p>
+        <p style="margin-left: 10%;">Telefon:...................<%= user.TELEFON %></p>
+        <p style="margin-left: 10%;">Afectiuni:...................<%= user.DIAGNOSTICE %></p>
+        <div style="font-size: 20px;text-decoration:underline;margin-left: 5%">Simptome pacient</div>
+        <div class="thought"><%= user.SIMPTOME %></div>
+    </div>
+    <div class="rasp">
+        
+        <div style="text-align: center;margin-top: 5%"> Raspundeti</div>
+        <form action="/reteta" method="POST" id="usrform">
+            <input style="display: none;" name="id_postare" type="text" value="<%= id %>">
+            <textarea id="" cols="30" rows="10" name="reteta"></textarea>
+            <input type="submit" class="myButton" style="float:right;margin-right: 5%" value="Trimiteti">
+        </form>
+    </div>
+    </div>
+</body>
+</html>

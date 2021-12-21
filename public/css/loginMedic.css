@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.hero{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(/img/bank.jpg);
+    background-size: cover;
+    position: absolute;
+    background-position: center;
+
+}
+.form-box{
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 8vw auto;
+    background: white;
+    padding: 5px;
+}
+.input-group{
+    top: 180px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+.input-field{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    background: transparent;   
+}
+.submit-btn{
+    width: 100%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: 95px 8px auto;
+    background: #eedc37;
+    border: 0;
+    outline: none;
+}
+#login{
+    left: 50px;
+}

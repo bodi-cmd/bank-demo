@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300&display=swap" rel="stylesheet">  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <title>Register</title>
+    <link rel="stylesheet" href="./css/register.css">
+
+</head>
+<body>
+    <div class="content">
+        <h1>Inregistrare</h1>
+        <form class="register-form" action="/register" method="POST">
+            <div class="flex-container">
+                <div class="flex1 f-left">
+                    <label>Nume de utilizator</label><br>
+                        <input type="text" name="username" class="input-field" placeholder="Scrie..."><br>
+                    <label>Nume</label><br>
+                        <input type="text" name="lastName" class="input-field" placeholder="Scrie..."><br>
+                </div>
+                <div class="flex1 f-right">
+                    <label>Parola</label><br>
+                        <input type="password" name="password" class="input-field" placeholder="Scrie..."><br>
+                    <label>Prenume</label><br>
+                        <input type="text" name="firstName" class="input-field" placeholder="Scrie..."><br>
+                </div>
+            </div>
+            <label>Adresa</label><br>
+            <input type="text" name="adresa" class="input-field" placeholder="Scrie..."><br>
+            <label>Email</label><br>
+            <input type="email" name="email" class="input-field" placeholder="Scrie..."><br>
+            <label>Telefon</label><br>
+            <input type="tel" name="phone" class="input-field" placeholder="Scrie..."><br>
+            <label>CNP</label><br>
+            <input type="numeric" name="cnp" class="input-field" placeholder="Scrie..."><br>
+            <label>Data nasterii</label><br>
+            <input type="date" name="birth" class="date-field" placeholder="Scrie..."><br>
+            <button id="submit" type="submit">Inregistreaza-ma</button>
+        </form>
+    </div>
+</body>
+</html>

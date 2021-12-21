@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=Urbanist:wght@300&display=swap" rel="stylesheet">
+    
+    <link href="./css/dash.css" rel="stylesheet" type="text/css">
+    <link href="./css/newTransaction.css" rel="stylesheet" type="text/css">
+    <script src="./js/jquery.js"></script>
+    <script src="./js/dashboard.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="new-transaction-wrapper">
+            <div id="new-transaction">
+                <i id="close-tr"class="fas fa-window-close"></i>
+                <div class="fl1">
+                    <div class="tr-form-wrapper">
+                        <label>De la:</label>
+                        <br>
+                        <input type="text" id="from-iban" value="" readonly>
+                        <br>
+                        <input type="text"  id="from-iban-balance" value="" readonly>
+                        <br><br><br><br>
+                        <label class="new-tr-from-label">Catre:</label>
+                        <br>
+                        <input type="text" id="to-iban" placeholder="IBAN">
+                        <br>
+                        <input type="text" id="to-name" placeholder="Nume">
+                        <br>
+                        <input type="text" id="to-sum" placeholder="Suma de transferat">
+                        <br>
+                        <div id="submit-transaction"><p>Transfera!</p></div>
+                    </div>
+                </div>
+                <div class="fl1">
+                    <div class="tr-contacts">
+                        <h1 style="font-size:25px; padding-top:10px;"> <i class="fas fa-user-friends"></i> Contacte</h1>
+                        <div id="add-contact">
+                            <input id="add-name" type="text" placeholder="Numele contactului...">
+                            <input id="add-iban" type="text" placeholder="IBAN-ul contactului...">
+                            <div id="submit-contact">Adauga <i class="fas fa-user-plus"></i></div>
+                        </div>
+                        <div class="contacts">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="explorer">
+            <img id="profile-pic" src="./img/luis.png" alt="">
+            <h1 id="name"><%= user.NUME + " " + user.PRENUME %></h1>
+            <br>  
+            <div id="accounts">
+                <% for(var i=0; i<accounts.length; i++) {%>
+                    <div class="account">
+                        <p>IBAN: <span class="acc-iban"><%= accounts[i].IBAN %></span></p>
+                        <p>Sold: $ <span class="acc-sold"><%= accounts[i].SOLD %></span></p>
+                    </div>
+                 <% } %>
+            </div>
+            <div id="new-acc" class="card-btn req-card">
+                <p>Deschide un cont</p>
+            </div>
+            <div class="card-btn req-card">
+                <p>Solicita un card</p>
+            </div>
+            <div class="card-btn transfer">
+                <p>Transfera bani</p>
+            </div>
+            <div class="card-btn transfer">
+                <p>Setari</p>
+            </div>
+            <div class="card-btn transfer">
+                <p>Log out</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="cards">
+                <div class="credit-card">
+                    <h1><i class="fas fa-coins"> </i>Eastern Union</h1>
+                    <p class="cc-number">1024 0340 3434 2343</p>
+                    <p class="cc-name">Barbu Bogdan</p>
+                    <p class="cc-date">12/25</p>
+                    <p class="cvv">CVV: 234</p>
+                </div>
+                <div class="credit-card">
+                    <h1><i class="fas fa-coins"> </i>Eastern Union</h1>
+                    <p class="cc-number">1024 0340 2340 3434</p>
+                    <p class="cc-name">Barbu Bogdan</p>
+                    <p class="cc-date">12/25</p>
+                    <p class="cvv">CVV: 234</p>
+                </div>
+                <div class="credit-card">
+                    <h1><i class="fas fa-coins"> </i>Eastern Union</h1>
+                    <p class="cc-number">1024 2340 3434 2343</p>
+                    <p class="cc-name">Barbu Bogdan</p>
+                    <p class="cc-date">12/25</p>
+                    <p class="cvv">CVV: 234</p>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <h1 id="title">Tranzactii <div class="loader"></div></h1>
+            <div id="tranzactii">
+                <% for(var i=0; i<transactions.length; i++) {%>
+                    <div class="tranzactie">
+                        <div class="tr-left">
+                            <p>Data: <%= transactions[i].DATA.toLocaleString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %></p>
+                            <% if(transactions[i].IBAN_DEST == accounts[0].IBAN){ %>
+                                <p>Suma: <span class="tr-balance green">$<%= transactions[i].SUMA %></p>
+                            <%} else{ %>
+                                <p>Suma: <span class="tr-balance red">$<%= transactions[i].SUMA %></p>
+                            <%}%>
+                        </div>
+                        <div class="tr-left">
+                            <p>IBAN: <%= transactions[i].IBAN_DEST %></p>
+                            <p>Nume: <%= transactions[i].NUME %></p>
+                        </div>
+                        <div class="tr-right">
+                            <% if(transactions[i].IBAN_DEST == accounts[0].IBAN){ %>
+                                <i class="fas fa-plus green"></i>
+                            <%} else{ %>
+                                <i class="fas fa-minus red"></i>
+                            <%}%>
+                            <i class="fas fa-coins"> </i>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

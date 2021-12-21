@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/%22%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container">
+    <div class="topnav">
+        <img src="./img/med.png" alt="" style="float:left;height: 55px;margin-left:20px;">
+        <p style="float:left;color:white;font-size:24px;padding:0;margin-top:10px;">MedApp</p>
+        <a class="active" href="/">Acasa</a>
+        <a href="/logout">Deconectare</a>
+    </div>
+    <table class="content-table">
+        <thead>
+          <tr>
+            <th>Nr.</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Sex</th>
+            <th>Varsta</th>
+            <th>Vizualizati</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<posts.length; i++) {%>
+            <tr>
+              <td><%= posts[i].ID%></td>
+              <td><%= posts[i].NUME%></td>
+              <td><%= posts[i].PRENUME%></td>
+              <td><%= posts[i].SEX%></td>
+              <td><%= posts[i].NASTERE%></td>
+              <td><a href="/pacient?id=<%= posts[i].ID%>">Accesati</a></td>
+            </tr>
+         <% } %>
+        </tbody>
+      </table>
+    </div>
+    
+</body>
+</html>
