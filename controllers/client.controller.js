@@ -56,29 +56,40 @@ module.exports.dashboard  = (req,res) => {
               // console.log(userRow[0][0]);
               // console.log(accountRows[0]);
 
-              const firstAccountIBAN = accountRows[0][0].IBAN;
-
-              const params = [];
-              params.push(req.user.CNP);
-              params.push(firstAccountIBAN);
               
-              connection.query('CALL get_transactions(?,?)',params, (err, transactionRows) => {
-                if(err){
-                      res.status(500).send("Database Error!");
-                      console.log(err);
-                      return;
-                    }
-                    // console.log(userRow[0][0]);
-                    // console.log(accountRows[0]);
-                    //console.log(transactionRows[0]);
+              if(accountRows[0].length){
+                const firstAccountIBAN = accountRows[0][0].IBAN;
+                const params = [];
+                params.push(req.user.CNP);
+                params.push(firstAccountIBAN);
+                
+                connection.query('CALL get_transactions(?,?)',params, (err, transactionRows) => {
+                  if(err){
+                        res.status(500).send("Database Error!");
+                        console.log(err);
+                        return;
+                      }
+                      // console.log(userRow[0][0]);
+                      // console.log(accountRows[0]);
+                      //console.log(transactionRows[0]);
 
-                    const frontData = {
-                      user: userRow[0][0],
-                      accounts: accountRows[0],
-                      transactions: transactionRows[0]
-                    };
-                    res.render('dashboard.ejs',{...frontData});
-              });
+                      const frontData = {
+                        user: userRow[0][0],
+                        accounts: accountRows[0],
+                        transactions: transactionRows[0]
+                      };
+                      res.render('dashboard.ejs',{...frontData});
+                });
+              }
+              else{
+                const frontData = {
+                  user: userRow[0][0],
+                  accounts: [],
+                  transactions: []
+                };
+                res.render('dashboard.ejs',{...frontData});
+
+              }
               //res.render('dashboard.ejs',{user: userRow[0][0] , accounts:accountRows[0]});
         });
   });
