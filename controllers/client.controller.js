@@ -184,6 +184,18 @@ charactersLength));
  return result;
 }
 
+module.exports.getUserData = (req,res) => {
+  const cnp = req.user.CNP;
+  connection.query('CALL get_user_by_cnp(?)',cnp, (err, userRow) => {
+    if(err){
+        console.log(err);
+          res.status(200).send("FAIL");
+          return;
+        }
+    res.render('profile.ejs',userRow[0][0]);
+   });
+}
+
 module.exports.getLogin = (req, res) => {
     res.render('login.ejs')
 }

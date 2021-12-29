@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com/%22%3E">
+        <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+        <link href="./css/myprofile.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/register.css">
+    </head>
+    <body>
+        <div class="content">
+            <h1>Inregistrare</h1>
+            <form class="register-form" action="/register" method="POST">
+                <div class="flex-container">
+                    <div class="flex1 f-left">
+                         <label>Nume</label><br>
+                            <input type="text" value="<%= NUME%>"  name="lastName" class="input-field" placeholder="Scrie..."readonly><br>
+                    </div>
+                    <div class="flex1 f-right">
+                        <label>Prenume</label><br>
+                            <input type="text"value="<%= PRENUME%>" name="firstName" class="input-field" placeholder="Scrie..."readonly><br>
+                    </div>
+                </div>
+                <label>Adresa</label><br>
+                <input type="text" name="adresa"value="<%= ADRESA%>" class="input-field" placeholder="Scrie..."readonly><br>
+                <label>Email</label><br>
+                <input type="email" name="email"value="<%= EMAIL%>" class="input-field" placeholder="Scrie..."readonly><br>
+                <label>Telefon</label><br>
+                <input type="tel" name="phone"value="<%= TELEFON%>" class="input-field" placeholder="Scrie..."readonly><br>
+                <label>CNP</label><br>
+                <input type="numeric" name="cnp"value="<%= CNP %>" class="input-field" placeholder="Scrie..."readonly><br>
+                <label>Data nasterii</label><br>
+                <input type="date"value="<%= DATA_NASTERII.toISOString().substring(0, 10)%>" name="birth" class="date-field" placeholder="Scrie..."readonly><br>
+        
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box; 
+    font-family: 'Urbanist', sans-serif;
+    --menu-color: rgb(78, 78, 78);
+    
+    --menu-color-translucent: rgba(78, 78, 78, 0.74);
+    --second-color:rgb(214, 214, 214);
+}
+
+body{
+    background-color: var(--menu-color);
+}

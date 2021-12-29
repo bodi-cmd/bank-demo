@@ -15,6 +15,11 @@ module.exports = (app) =>{
         failureRedirect: '/login',
         failureFlash: true
     }))
+
+    app.get('/logout', (req, res) => {
+        req.logOut()
+        res.redirect('/login')
+      })
     
     app.get('/',checkAuthenticated, clientController.dashboard)
 
@@ -25,4 +30,7 @@ module.exports = (app) =>{
     app.get('/add-contact',checkAuthenticated,clientController.addContact)
     
     app.get('/contacts',checkAuthenticated,clientController.getContacts)
+
+    app.get('/my-profile',checkAuthenticated,clientController.getUserData)
+
 }
