@@ -15,7 +15,7 @@
     <link href="./css/dash.css" rel="stylesheet" type="text/css">
     <link href="./css/newTransaction.css" rel="stylesheet" type="text/css">
     <script src="./js/jquery.js"></script>
-    <script src="./js/dashboard.js"></script>
+    <script src="./js/manage.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -60,24 +60,7 @@
         <div class="explorer">
             <img id="profile-pic" src="./img/luis.png" alt="">
             <h1 id="name"><%= user.NUME + " " + user.PRENUME %></h1>
-            <br>  
-            <div id="accounts">
-                <% for(var i=0; i<accounts.length; i++) {%>
-                    <div class="account">
-                        <p>IBAN: <span class="acc-iban"><%= accounts[i].IBAN %></span></p>
-                        <p>Sold: $ <span class="acc-sold"><%= accounts[i].SOLD %></span></p>
-                    </div>
-                 <% } %>
-            </div>
-            <div id="new-acc" class="card-btn req-card">
-                <p>Deschide un cont</p>
-            </div>
-            <div class="card-btn req-card">
-                <p>Solicita un card</p>
-            </div>
-            <div class="card-btn transfer">
-                <p>Transfera bani</p>
-            </div>
+            <br>
             <a href="/my-profile" class="nostyle">
             <div class="card-btn">
                 <p>Setari</p>
@@ -90,53 +73,24 @@
             
         </div>
         <div class="content">
-            <div class="cards">
-                <div class="credit-card">
-                    <h1><i class="fas fa-coins"> </i>Eastern Union</h1>
-                    <p class="cc-number">1024 0340 3434 2343</p>
-                    <p class="cc-name"><%= user.NUME + " " + user.PRENUME %></p>
-                    <p class="cc-date">12/25</p>
-                    <p class="cvv">CVV: 234</p>
-                </div>
-                <div class="credit-card">
-                    <h1><i class="fas fa-coins"> </i>Eastern Union</h1>
-                    <p class="cc-number">1024 0340 2340 3434</p>
-                    <p class="cc-name"><%= user.NUME + " " + user.PRENUME %></p>
-                    <p class="cc-date">12/25</p>
-                    <p class="cvv">CVV: 234</p>
-                </div>
-                <div class="credit-card">
-                    <h1><i class="fas fa-coins"> </i>Eastern Union</h1>
-                    <p class="cc-number">1024 2340 3434 2343</p>
-                    <p class="cc-name"><%= user.NUME + " " + user.PRENUME %></p>
-                    <p class="cc-date">12/25</p>
-                    <p class="cvv">CVV: 234</p>
-                </div>
-            </div>
             <div style="clear: both;"></div>
             <h1 id="title">Tranzactii <div class="loader"></div></h1>
             <div id="tranzactii">
                 <% for(var i=0; i<transactions.length; i++) {%>
-                    <div class="tranzactie">
+                    <div class="tranzactie" id="tranzactie-<%= transactions[i].ID %>">
                         <div class="tr-left">
                             <p>Data: <%= transactions[i].DATA.toLocaleString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %></p>
-                            <% if(transactions[i].IBAN_DEST == accounts[0].IBAN){ %>
-                                <p>Suma: <span class="tr-balance green">$<%= transactions[i].SUMA %></p>
-                            <%} else{ %>
+
                                 <p>Suma: <span class="tr-balance red">$<%= transactions[i].SUMA %></p>
-                            <%}%>
+                        
                         </div>
                         <div class="tr-left">
-                            <p>IBAN: <%= transactions[i].IBAN_DEST %></p>
-                            <p>Nume: <%= transactions[i].NUME %></p>
+                            <p>FROM IBAN: <%= transactions[i].IBAN_SURSA %></p>
+                            <p>TO IBAN: <%= transactions[i].IBAN_DEST %></p>
                         </div>
-                        <div class="tr-right">
-                            <% if(transactions[i].IBAN_DEST == accounts[0].IBAN){ %>
-                                <i class="fas fa-plus green"></i>
-                            <%} else{ %>
-                                <i class="fas fa-minus red"></i>
-                            <%}%>
-                            <i class="fas fa-coins"> </i>
+                        <div id="<%= transactions[i].ID %>" class="tr-right">
+                            <i id="approve" class="fas fa-check"></i>
+                            <i id="deny" class="fas fa-ban"></i>
                             <p><%= transactions[i].STATUS %></p>
                         </div>
                     </div>

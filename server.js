@@ -37,6 +37,8 @@ if (process.env.NODE_ENV !== 'production') {
   initializePassport(passport, serializer.getUser, serializer.getUserByCNP)
   
   require('./routes/client.routes')(app)
+  require('./routes/employee.routes')(app)
+
 
   /*app.get('/',checkAuthenticated, (req, res) => {
 

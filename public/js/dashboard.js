@@ -45,6 +45,7 @@ $( document ).ready(function() {
                                     
                                     <i class="fas fa-${incomingSign}"></i>
                                     <i class="fas fa-coins"> </i>
+                                    <p>${ transactions[i].STATUS }</p>
                                 </div>
                             </div>`;
                 $("#tranzactii").append(str);

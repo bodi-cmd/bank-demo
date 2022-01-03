@@ -70,7 +70,7 @@ module.exports.dashboard  = (req,res) => {
                         return;
                       }
                       // console.log(userRow[0][0]);
-                      // console.log(accountRows[0]);
+                       console.log(accountRows[0]);
                       //console.log(transactionRows[0]);
 
                       const frontData = {
@@ -102,7 +102,7 @@ module.exports.getTransactions = (req,res) => {
   connection.query('CALL get_transactions(?,?)',params, (err, transactionRows) => {
     if(err){
           res.status(500).send("Database Error!");
-          console.log(err);
+          //console.log(err);
           return;
         }
         //console.log(transactionRows[0]);

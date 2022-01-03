@@ -1,6 +1,7 @@
 const clientController = require('../controllers/client.controller')
+
 const {checkAuthenticated, checkNotAuthenticated} = require("../middleware/auth.middleware");
-const {checkIfClient, checkIfAdmin, checkIfEmployee} = require("../middleware/roles.middleware")
+const {checkIfClient} = require("../middleware/roles.middleware")
 
 const passport = require('passport')
 
@@ -21,16 +22,17 @@ module.exports = (app) =>{
         res.redirect('/login')
       })
     
-    app.get('/',checkAuthenticated, clientController.dashboard)
+    app.get('/',checkAuthenticated,checkIfClient, clientController.dashboard)
 
-    app.post('/new-account', checkAuthenticated, clientController.newAcc)
+    app.post('/new-account', checkAuthenticated, checkIfClient, clientController.newAcc)
 
-    app.get('/tranzactii/:iban', checkAuthenticated, clientController.getTransactions)
-    app.get('/new-transaction', checkAuthenticated, clientController.newTransaction)
-    app.get('/add-contact',checkAuthenticated,clientController.addContact)
+    app.get('/tranzactii/:iban', checkAuthenticated, checkIfClient, clientController.getTransactions)
+    app.get('/new-transaction', checkAuthenticated, checkIfClient, clientController.newTransaction)
+    app.get('/add-contact',checkAuthenticated, checkIfClient, clientController.addContact)
     
-    app.get('/contacts',checkAuthenticated,clientController.getContacts)
+    app.get('/contacts',checkAuthenticated, checkIfClient, clientController.getContacts)
 
-    app.get('/my-profile',checkAuthenticated,clientController.getUserData)
+    app.get('/my-profile',checkAuthenticated, checkIfClient, clientController.getUserData)
 
+    
 }
